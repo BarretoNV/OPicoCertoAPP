@@ -1,22 +1,31 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { Routes } from './src/routes';
-import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+// No arquivo Routes.js
 
-export default function App() {
-  const navigation = useNavigation();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './pages/home';
+import CityDetails from './pages/CityDetails';
 
-  useEffect(() => {
-    // Após um certo tempo determinado, ou ao finalizar algum carregamento necessário
-    setTimeout(() => {
-      navigation.navigate('Home');
-    }, 3000); // Navegar para "Home" após 3 segundos (3000 milissegundos)
-  }, [navigation]);
+const Tab = createBottomTabNavigator();
 
+export function Routes() {
   return (
-    <NavigationContainer>
-      <Routes />
-    </NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+          initialParams: {
+            navigateAfterDelay: true,
+          },
+        }}
+      />
+      <Tab.Screen
+        name="CityDetails"
+        component={CityDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Tab.Navigator>
   );
 }
-

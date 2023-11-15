@@ -1,5 +1,7 @@
+// No arquivo Routes.js
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './pages/home'; // Remova a referência a 'index.js'
+import Home from './pages/home';
 import CityDetails from './pages/CityDetails';
 
 const Tab = createBottomTabNavigator();
@@ -8,10 +10,13 @@ export function Routes() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="home"
-        component={Home} // Use 'Home' com a primeira letra maiúscula
+        name="Home"
+        component={Home}
         options={{
           headerShown: false,
+          initialParams: {
+            navigateAfterDelay: true,
+          },
         }}
       />
       <Tab.Screen
@@ -24,5 +29,3 @@ export function Routes() {
     </Tab.Navigator>
   );
 }
-
-export default Routes;

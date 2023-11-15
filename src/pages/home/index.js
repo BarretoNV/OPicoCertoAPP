@@ -12,7 +12,6 @@ const Home = () => {
   const navigation = useNavigation();
 
   const goToCityDetails = (city) => {
-    // Navega para a tela de detalhes quando um item do carrossel é pressionado
     navigation.navigate('CityDetails', { city });
   };
 
@@ -22,7 +21,10 @@ const Home = () => {
       <ScrollView horizontal>
         {citiesData.map((city, index) => (
           <TouchableOpacity key={index} onPress={() => goToCityDetails(city)}>
-            {/* Renderização do carrossel */}
+            <View style={{ padding: 16, alignItems: 'center', justifyContent: 'center' }}>
+              <Text>{city.city}</Text>
+              <Text>{city.description}</Text>
+            </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
